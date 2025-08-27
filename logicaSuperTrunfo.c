@@ -6,72 +6,83 @@
 // Siga os comentários para implementar cada parte do desafio.
 
 int main() {
-    // Variáveis para armazenar dados
-    char codigo [10], codigo2 [10];
-    char nome1 [50], nome2 [50];
+    // Variáveis para armazenar dados das cidades
+    char codigo1[10], codigo2[10];
+    char nome1[50], nome2[50];
     int populacao1, populacao2;
     float area1, area2;
     float pib1, pib2;
 
-    // Cadastro primeira Carta:
-    printf ("=== Cadastro da carta 1 ===\n");
-    printf ("Digite o código da cidade: ");
+    // Cadastro da primeira carta
+    printf("=== Cadastro da Carta 1 ===\n");
+    printf("Digite o código da cidade: ");
     scanf("%s", codigo1);
-
-    printf ("Digite o nome da cidade: ");
-    scanf ("%[^\n]", nome1);
-
-    printf ("Digite a população: ");
-    scanf ("%d", &populacao1);
-
-    printf ("Digite a área (em km²):");
-    scanf ("%f", &area1);
-
-    printf ("Digite o PIB: ");
+    printf("Digite o nome da cidade: ");
+    scanf(" %[^\n]", nome1); // lê string com espaços
+    printf("Digite a população: ");
+    scanf("%d", &populacao1);
+    printf("Digite a área (em km²): ");
+    scanf("%f", &area1);
+    printf("Digite o PIB (em bilhões): ");
     scanf("%f", &pib1);
 
-    // Cadastro segunda Carta:
-    printf ("=== Cadastro da carta 2 ===\n");
-    printf ("Digite o código da cidade: ");
+    // Cadastro da segunda carta
+    printf("\n=== Cadastro da Carta 2 ===\n");
+    printf("Digite o código da cidade: ");
     scanf("%s", codigo2);
-
-    printf ("Digite o nome da cidade: ");
-    scanf ("%[^\n]", nome2);
-
-    printf ("Digite a população: ");
-    scanf ("%d", &populacao2);
-
-    printf ("Digite a área (em km²):");
-    scanf ("%f", &area2);
-
-    printf ("Digite o PIB: ");
+    printf("Digite o nome da cidade: ");
+    scanf(" %[^\n]", nome2);
+    printf("Digite a população: ");
+    scanf("%d", &populacao2);
+    printf("Digite a área (em km²): ");
+    scanf("%f", &area2);
+    printf("Digite o PIB (em bilhões): ");
     scanf("%f", &pib2);
 
-    printf ("\n=== Comparação das Cartas ===\n");
+    printf("\n=== Comparação das Cartas ===\n");
 
-    // Exemplo:
-    // printf("Digite o código da cidade: ");
-    // scanf("%s", codigo);
-    // 
-    // (Repita para cada propriedade)
+    // Comparação da população
+    if (populacao1 > populacao2) {
+        printf("Maior população: %s (%d habitantes)\n", nome1, populacao1);
+    } else if (populacao2 > populacao1) {
+        printf("Maior população: %s (%d habitantes)\n", nome2, populacao2);
+    } else {
+        printf("As cidades têm populações iguais (%d habitantes).\n", populacao1);
+    }
 
-    // Comparação de Cartas:
-    // Desenvolva a lógica de comparação entre duas cartas.
-    // Utilize estruturas de decisão como if, if-else para comparar atributos como população, área, PIB, etc.
+    // Comparação da área
+    if (area1 > area2) {
+        printf("Maior área: %s (%.2f km²)\n", nome1, area1);
+    } else if (area2 > area1) {
+        printf("Maior área: %s (%.2f km²)\n", nome2, area2);
+    } else {
+        printf("As cidades têm áreas iguais (%.2f km²).\n", area1);
+    }
 
-    // Exemplo:
-    // if (populacaoA > populacaoB) {
-    //     printf("Cidade 1 tem maior população.\n");
-    // } else {
-    //     printf("Cidade 2 tem maior população.\n");
-    // }
+    // Comparação do PIB
+    if (pib1 > pib2) {
+        printf("Maior PIB: %s (%.2f bilhões)\n", nome1, pib1);
+    } else if (pib2 > pib1) {
+        printf("Maior PIB: %s (%.2f bilhões)\n", nome2, pib2);
+    } else {
+        printf("As cidades têm PIBs iguais (%.2f bilhões).\n", pib1);
+    }
 
-    // Exibição dos Resultados:
-    // Após realizar as comparações, exiba os resultados para o usuário.
-    // Certifique-se de que o sistema mostre claramente qual carta venceu e com base em qual atributo.
+    // Definição de um "vencedor" (critério simples: soma das vitórias)
+    int pontos1 = 0, pontos2 = 0;
 
-    // Exemplo:
-    // printf("A cidade vencedora é: %s\n", cidadeVencedora);
+    if (populacao1 > populacao2) pontos1++; else if (populacao2 > populacao1) pontos2++;
+    if (area1 > area2) pontos1++; else if (area2 > area1) pontos2++;
+    if (pib1 > pib2) pontos1++; else if (pib2 > pib1) pontos2++;
+
+    printf("\n=== Resultado Final ===\n");
+    if (pontos1 > pontos2) {
+        printf("A cidade vencedora é: %s (%d pontos)\n", nome1, pontos1);
+    } else if (pontos2 > pontos1) {
+        printf("A cidade vencedora é: %s (%d pontos)\n", nome2, pontos2);
+    } else {
+        printf("Empate! Ambas as cidades têm %d pontos.\n", pontos1);
+    }
 
     return 0;
 }
